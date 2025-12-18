@@ -331,9 +331,9 @@
             let filteredUsers = allUsers;
 
             if (currentFilter === 'active') {
-                filteredUsers = allUsers.filter(u => u.is_active === 1 || u.is_active === true);
+                filteredUsers = allUsers.filter(u => u.subscription_status !=== "EXPIRED");
             } else if (currentFilter === 'inactive') {
-                filteredUsers = allUsers.filter(u => u.is_active === 0 || u.is_active === false);
+                filteredUsers = allUsers.filter(u => u.subscription_status === "EXPIRED");
             }
 
             if (filteredUsers.length === 0) {
