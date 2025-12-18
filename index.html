@@ -342,13 +342,13 @@
             }
 
             userList.innerHTML = filteredUsers.map(user => `
-                <div class="user-item" onclick="selectUser(${user.id})">
+                <div class="user-item" onclick="selectUser(${user.user_id})">
                     <div class="user-info">
-                        <h3>${user.first_name || ''} ${user.last_name || ''}</h3>
-                        <p>ID: ${user.id}</p>
+                        <h3>${user.user_name || ''} ${user.last_name || ''}</h3>
+                        <p>ID: ${user.user_id}</p>
                         <p>Joined: ${new Date(user.created_at).toLocaleDateString()}</p>
                     </div>
-                    <div class="user-badge">${user.is_active ? 'Active' : 'Inactive'}</div>
+                    <div class="user-badge">${user.subscription_status}</div>
                 </div>
             `).join('');
         }
@@ -368,11 +368,11 @@
         }
 
         function selectUser(userId) {
-            const user = allUsers.find(u => u.id === userId);
+            const user = allUsers.find(u => u.user_id === userId);
             if (user) {
                 tg.showPopup({
-                    title: `${user.first_name} ${user.last_name}`,
-                    message: `ID: ${user.id}\nStatus: ${user.is_active ? 'Active' : 'Inactive'}\nJoined: ${new Date(user.created_at).toLocaleDateString()}`,
+                    title: `${user.user_id} ${user.user_name}`,
+                    message: `ID: ${user.user_id}\nStatus: ${user.subscription_status}\nJoined: ${new Date(user.created_at).toLocaleDateString()}`,
                     buttons: [{type: 'close', text: 'Close'}]
                 });
             }
