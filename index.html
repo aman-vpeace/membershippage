@@ -331,7 +331,7 @@
             let filteredUsers = allUsers;
 
             if (currentFilter === 'active') {
-                filteredUsers = allUsers.filter(u => u.subscription_status !=== "EXPIRED");
+                filteredUsers = allUsers.filter(u => u.subscription_status !== "EXPIRED");
             } else if (currentFilter === 'inactive') {
                 filteredUsers = allUsers.filter(u => u.subscription_status === "EXPIRED");
             }
